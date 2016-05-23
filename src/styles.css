@@ -1,5 +1,5 @@
 :global(.DraftEditor-root) {
-  border: 1px solid red;
+  margin: 0;
 }
 
 .container {
@@ -23,5 +23,14 @@
 }
 
 .richTextEditor {
-  flex: 1;
+  border: 1px solid green;
+  /*flex: 1;*/
+}
+
+.toolbar {
+  border: 1px solid red;
+}
+
+.editor {
+  border: 1px solid blue;
 }

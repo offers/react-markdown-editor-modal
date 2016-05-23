@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import RichTextEditor from 'react-rte';
 import styles from './styles.css';
@@ -16,8 +17,9 @@ export default class MarkdownEditorModal extends Component {
   }
 
   render () {
+
     const openEditor = (e) => {
-      e.preventDefault(); // opened via aHref
+      e.preventDefault();
       this.setState({isEditorOpen: true, editorValue: this.state.initialValue});
     };
 
@@ -36,6 +38,7 @@ export default class MarkdownEditorModal extends Component {
     };
 
     const onChangeSource = (e) => {
+      console.log('changing source');
       let source = e.target.value;
       let oldEditorValue = this.state.editorValue;
       this.setState({
@@ -45,7 +48,7 @@ export default class MarkdownEditorModal extends Component {
 
     return (
       <span>
-        <a href='#' onClick={openEditor}>Editor</a> | Preview
+        <a href='#' onClick={openEditor} ref='foo'>Editor</a> | Preview
         <Modal isOpen={this.state.isEditorOpen}>
           <div className={styles.container}>
             <div className={styles.editorColumn}>
@@ -58,6 +61,8 @@ export default class MarkdownEditorModal extends Component {
             <div className={styles.editorColumn}>
               <RichTextEditor
                 className={styles.richTextEditor}
+                toolbarClassName={styles.toolbar}
+                editorClassName={styles.editor}
                 value={this.state.editorValue}
                 onChange={onChange}
               />
@@ -71,6 +76,3 @@ export default class MarkdownEditorModal extends Component {
   }
 
 }
-
-
-
